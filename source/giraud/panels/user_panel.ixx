@@ -42,8 +42,15 @@ public:
 			ImGui::Text(network.GetSession().refreshToken.c_str());
 
 			int secondsLeft = network.GetSession().expirationTime - Timestamp::now();
-			auto expirationText = std::format("Expires in: {}", secondsLeft);
-			ImGui::Text(expirationText.c_str());
+			if (secondsLeft > 0)
+			{
+				auto expirationText = std::format("Expires in: {}", secondsLeft);
+				ImGui::Text(expirationText.c_str());
+			}
+			else
+			{
+				ImGui::Text("expired");
+			}
 
 			if (ImGui::Button("Logout"))
 			{

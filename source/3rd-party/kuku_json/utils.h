@@ -11,8 +11,12 @@ namespace json
 	T loadFromFile(std::string path)
 	{
 		std::string text = readFileText(path);
-		nlohmann::json json = nlohmann::json::parse(text);
-		return from_json<T>(json);
+		if (!text.empty())
+		{
+			nlohmann::json json = nlohmann::json::parse(text);
+			return from_json<T>(json);
+		}
+		return {};
 	}
 
 	void saveToFile(json::serializable& object, std::string path);
