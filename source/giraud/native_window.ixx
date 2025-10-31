@@ -13,8 +13,11 @@ public:
 
 	explicit NativeWindow()
 	{
+		HICON hIconLarge = (HICON)LoadImage(nullptr, L"icon.ico", IMAGE_ICON, 32, 32, LR_LOADFROMFILE);
+		HICON hIconSmall = (HICON)LoadImage(nullptr, L"icon.ico", IMAGE_ICON, 16, 16, LR_LOADFROMFILE);
+
 		//ImGui_ImplWin32_EnableDpiAwareness();
-		wc = { sizeof(wc), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(nullptr), nullptr, nullptr, nullptr, nullptr, L"Giraud", nullptr };
+		wc = { sizeof(wc), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(nullptr), hIconLarge, nullptr, nullptr, nullptr, L"Giraud", hIconSmall };
 		RegisterClassExW(&wc);
 		hwnd = CreateWindowW(wc.lpszClassName, L"Giraud", WS_OVERLAPPEDWINDOW, 100, 100, 1280, 800, nullptr, nullptr, wc.hInstance, nullptr);
 

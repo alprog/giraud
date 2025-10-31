@@ -272,6 +272,7 @@
     <ClInclude Include="3rd-party\kuku_json\preprocessor\common.h" />
     <ClInclude Include="3rd-party\kuku_json\preprocessor\for_each.h" />
     <ClInclude Include="giraud\kuku_json.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3rd-party\imgui-docking\backends\imgui_impl_dx12.cpp" />
@@ -318,6 +319,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="giraud.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\data\icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
