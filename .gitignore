@@ -2,4 +2,4 @@ source/.vs
 source/*.user
 source/imgui.ini
 build
-config/secret.txt
+data/session.txt
