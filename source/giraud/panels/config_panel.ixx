@@ -23,8 +23,6 @@ public:
 		ImGui::Text(app.id.c_str());
 		ImGui::Text(app.secret.c_str());
 		ImGui::Text(app.redirect_uri.c_str());
-
-		ImGui::Text(("Domain: " + config.domain).c_str());
 	}
 
 	Configuration& config;

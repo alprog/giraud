@@ -17,6 +17,11 @@ public:
 	const Database& GetDatabase() const { return database; }
 	const Network& GetNetwork() const { return network; }
 
+	void UpdateProjectList()
+	{
+		database.projects = network.GetAllProjects().values;
+	}
+
 private:
 	Database& database;
 	Network& network;

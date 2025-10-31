@@ -3,7 +3,18 @@ module;
 export module requests;
 
 import std;
+import project;
+
 export import json;
+
+export struct WebSite : public json::serializable
+{
+	std::string id;
+	std::string name;
+	std::string url;
+
+	JSCHEME(id, name, url);
+};
 
 export struct TokenRequest : public json::serializable
 {
@@ -24,4 +35,11 @@ export struct TokenResponse : public json::serializable
 	std::string scope;
 
 	JSCHEME(access_token, expires_in, token_type, scope);
+};
+
+export struct ProjectsResponse : public json::serializable
+{
+	std::vector<Project> values;
+
+	JSCHEME(values);
 };

@@ -37,7 +37,7 @@ export JiraApp GetPublicGiraudApp()
 {
 	// secret "encrypted" against automatic bots, but it is practically public for any human intruder
 	// do not use PublicGiraudApp for any sensetive project
-	// create your secure app at http://developer.attlassian.com/ instead
+	// create your secure app at https://developer.atlassian.com/console instead
 
 	JiraApp app;
 	app.id = "9kRa3WQXnsoGo2SS690tLszrk05tcjhx";

@@ -5,7 +5,7 @@ import std;
 export class Session
 {
 public:
-	bool IsLogined() const
+	bool IsLoggedIn() const
 	{
 		return !accessToken.empty();
 	}

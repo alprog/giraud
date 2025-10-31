@@ -19,6 +19,11 @@ public:
 	const Configuration& GetConfig() const { return config; }
 	Session& GetSession() { return session; }
 
+	bool IsLoggedIn() const
+	{
+		return session.IsLoggedIn();
+	}
+
 	void Login(std::string code)
 	{
 		TokenRequest request;
@@ -30,6 +35,8 @@ public:
 
 		TokenResponse response = Post(request);
 		session.accessToken = response.access_token;
+
+		cloudId = GetCloudId();
 	}
 
 	void Logout()
@@ -45,9 +52,13 @@ public:
 		return from_json<TokenResponse>(responseJson);
 	}
 
+	ProjectsResponse GetAllProjects();
+
 	std::string Post(std::string address, std::string bodyText);
+	std::string GetCloudId();
 
 private:
 	const Configuration& config;
 	Session session;
+	std::string cloudId;
 };

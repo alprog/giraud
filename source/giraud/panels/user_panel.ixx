@@ -22,7 +22,7 @@ public:
 
 	void Draw() override
 	{
-		if (!network.GetSession().IsLogined())
+		if (!network.GetSession().IsLoggedIn())
 		{
 			if (ImGui::Button("Login"))
 			{

@@ -19,7 +19,6 @@ public:
 	}
 
 	JiraApp app;
-	std::string domain;
 
-	JSCHEME(app, domain);
+	JSCHEME(app);
 };
