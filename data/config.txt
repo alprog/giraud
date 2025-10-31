@@ -3,6 +3,5 @@
 		"id": "9kRa3WQXnsoGo2SS690tLszrk05tcjhx",
 		"secret": "",
 		"redirect_uri": "https://alprog.github.io/giraud/auth.html"
-	},
-	"domain": "https://your-domain.atlassian.net"
+	}
 }
