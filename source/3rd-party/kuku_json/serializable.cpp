@@ -44,6 +44,16 @@ float from_json<float>(json::object& object)
 }
 
 template<>
+std::time_t from_json<std::time_t>(json::object& object)
+{
+	if (object.is_number_float())
+	{
+		return object.get<std::time_t>();
+	}
+	throw std::exception("not float");
+}
+
+template<>
 std::string from_json<std::string>(json::object& object)
 {
 	if (object.is_string())

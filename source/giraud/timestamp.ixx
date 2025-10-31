@@ -1,8 +1,10 @@
+module;
+#include "kuku_json.h"
 export module timestamp;
 
 import std;
 
-export struct Timestamp
+export struct Timestamp : public json::serializable
 {
 public:
 	Timestamp()
@@ -34,11 +36,13 @@ public:
 
 	friend int operator-(const Timestamp& a, const Timestamp& b)
 	{
-		return a.value - b.value;
+		return static_cast<int>(a.value - b.value);
 	}
 
 public:
 	std::time_t value;
+
+	JSCHEME(value);
 };
 
 

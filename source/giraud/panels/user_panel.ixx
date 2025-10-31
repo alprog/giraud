@@ -10,6 +10,8 @@ import database_panel;
 import configuration;
 import network;
 
+// for intellisense
+
 export class UserPanel : public GuiPanel
 {
 public:
@@ -37,6 +39,7 @@ public:
 		else
 		{
 			ImGui::Text(network.GetSession().accessToken.c_str());
+			ImGui::Text(network.GetSession().refreshToken.c_str());
 
 			int secondsLeft = network.GetSession().expirationTime - Timestamp::now();
 			auto expirationText = std::format("Expires in: {}", secondsLeft);

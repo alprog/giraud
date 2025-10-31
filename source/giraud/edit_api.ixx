@@ -4,6 +4,8 @@ import configuration;
 import database;
 import network;
 
+// for intellisense
+
 export class EditAPI
 {
 public:

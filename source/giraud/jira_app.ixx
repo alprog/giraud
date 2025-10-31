@@ -22,7 +22,7 @@ export struct JiraApp : public json::serializable
 		GetUri uri("https://auth.atlassian.com/authorize");
 		uri.AddParam("audience", "api.atlassian.com");
 		uri.AddParam("client_id", id);
-		uri.AddParam("scope", "read%3Ajira-work%20write%3Ajira-work%20read%3Ajira-user");
+		uri.AddParam("scope", "read%3Ajira-work%20write%3Ajira-work%20read%3Ajira-user%20offline_access");
 		uri.AddParam("redirect_uri", "https%3A%2F%2Falprog.github.io%2Fgiraud%2Fauth.html");
 		uri.AddParam("state", "${YOUR_USER_BOUND_VALUE}");
 		uri.AddParam("response_type", "code");

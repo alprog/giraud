@@ -25,6 +25,7 @@ namespace json
 	json::object serialize(json::serializable& serializable);
 	int serialize(int value);
 	float serialize(float value);
+	std::time_t serialize(std::time_t value);
 	std::string serialize(std::string value);
 
 	template <typename T>

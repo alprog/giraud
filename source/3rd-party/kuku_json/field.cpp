@@ -26,5 +26,6 @@ namespace json
 
 	int serialize(int value) { return value; }
 	float serialize(float value) { return value; }
+	std::time_t serialize(std::time_t value) { return value; }
 	std::string serialize(std::string value) { return value; }
 }

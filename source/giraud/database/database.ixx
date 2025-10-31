@@ -4,6 +4,8 @@ import std;
 import issue;
 import project;
 
+// for intellisense
+
 export class Database
 {
 public:

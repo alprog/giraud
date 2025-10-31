@@ -1,9 +1,13 @@
+module;
+#include "kuku_json.h"
 export module session;
 
 import std;
 import timestamp;
 
-export class Session
+// for intellisense
+
+export class Session : public json::serializable
 {
 public:
 	bool IsLoggedIn() const
@@ -12,5 +16,8 @@ public:
 	}
 
 	std::string accessToken;
+	std::string refreshToken;
 	Timestamp expirationTime;
+
+	JSCHEME(accessToken, refreshToken, expirationTime);
 };

@@ -5,6 +5,8 @@ export import gui_panel;
 export import database;
 export import edit_api;
 
+// for intellisense
+
 export class DatabasePanel : public GuiPanel
 {
 public:
