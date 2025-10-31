@@ -41,7 +41,7 @@ std::string Network::GetCloudId()
 ProjectsResponse Network::GetAllProjects()
 {
 	httplib::Client cli("https://api.atlassian.com");
-	std::string address = std::format("/ex/jira/{}/{}", cloudId, "/rest/api/3/project/search");
+	std::string address = std::format("/ex/jira/{}/{}", session.cloudId, "/rest/api/3/project/search");
 
 	std::string authorizationString = std::format("Bearer {}", session.accessToken);
 	httplib::Headers headers = {

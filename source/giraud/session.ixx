@@ -18,6 +18,7 @@ public:
 	std::string accessToken;
 	std::string refreshToken;
 	Timestamp expirationTime;
+	std::string cloudId;
 
-	JSCHEME(accessToken, refreshToken, expirationTime);
+	JSCHEME(accessToken, refreshToken, expirationTime, cloudId);
 };

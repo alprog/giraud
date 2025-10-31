@@ -3,6 +3,7 @@
 #include "serializable.h"
 
 std::string readFileText(std::string path);
+void writeTextToFile(std::string text, std::string path);
 
 namespace json
 {
@@ -13,4 +14,6 @@ namespace json
 		nlohmann::json json = nlohmann::json::parse(text);
 		return from_json<T>(json);
 	}
+
+	void saveToFile(json::serializable& object, std::string path);
 }

@@ -16,6 +16,7 @@ public:
 	explicit Network(const Configuration& config)
 		: config{ config }
 	{
+		session = json::loadFromFile<Session>("session.txt");
 	}
 
 	const Configuration& GetConfig() const { return config; }
@@ -40,7 +41,9 @@ public:
 		session.refreshToken = response.refresh_token;
 		session.expirationTime = Timestamp::now() + response.expires_in;
 
-		cloudId = GetCloudId();
+		session.cloudId = GetCloudId();
+
+		json::saveToFile(session, "session.txt");
 	}
 
 	void Logout()
@@ -64,5 +67,4 @@ public:
 private:
 	const Configuration& config;
 	Session session;
-	std::string cloudId;
 };

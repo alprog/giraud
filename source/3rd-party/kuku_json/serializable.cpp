@@ -46,7 +46,7 @@ float from_json<float>(json::object& object)
 template<>
 std::time_t from_json<std::time_t>(json::object& object)
 {
-	if (object.is_number_float())
+	if (object.is_number_integer())
 	{
 		return object.get<std::time_t>();
 	}
