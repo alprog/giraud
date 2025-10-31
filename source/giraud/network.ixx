@@ -35,6 +35,7 @@ public:
 
 		TokenResponse response = Post(request);
 		session.accessToken = response.access_token;
+		session.expirationTime = Timestamp::now() + response.expires_in;
 
 		cloudId = GetCloudId();
 	}

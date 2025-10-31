@@ -310,6 +310,7 @@
     <ClCompile Include="giraud\panels\tree_panel.ixx" />
     <ClCompile Include="giraud\requests.ixx" />
     <ClCompile Include="giraud\session.ixx" />
+    <ClCompile Include="giraud\timestamp.ixx" />
     <ClCompile Include="giraud\user.ixx" />
   </ItemGroup>
   <ItemGroup>

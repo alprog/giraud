@@ -1,6 +1,7 @@
 export module session;
 
 import std;
+import timestamp;
 
 export class Session
 {
@@ -11,4 +12,5 @@ public:
 	}
 
 	std::string accessToken;
+	Timestamp expirationTime;
 };

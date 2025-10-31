@@ -5,6 +5,7 @@ module;
 #include <shellapi.h>
 export module user_panel;
 
+import std;
 import database_panel;
 import configuration;
 import network;
@@ -36,6 +37,11 @@ public:
 		else
 		{
 			ImGui::Text(network.GetSession().accessToken.c_str());
+
+			int secondsLeft = network.GetSession().expirationTime - Timestamp::now();
+			auto expirationText = std::format("Expires in: {}", secondsLeft);
+			ImGui::Text(expirationText.c_str());
+
 			if (ImGui::Button("Logout"))
 			{
 				network.Logout();
