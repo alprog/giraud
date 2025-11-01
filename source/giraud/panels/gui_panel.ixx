@@ -4,6 +4,8 @@ export module gui_panel;
 
 export import std;
 
+// for intellisense
+
 export class GuiPanel
 {
 public:

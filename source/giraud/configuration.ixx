@@ -6,6 +6,8 @@ import jira_app;
 import user;
 import std;
 
+// for intellisense
+
 export class Configuration : public json::serializable
 {
 public:

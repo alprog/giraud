@@ -10,6 +10,8 @@ import native_window;
 import gfx_renderer;
 import gui_panel;
 
+// for intellisense
+
 export class GuiSystem
 {
 public:

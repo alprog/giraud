@@ -15,6 +15,8 @@ export module gfx_renderer;
 
 import native_window;
 
+// for intellisense
+
 export constexpr const int NUM_FRAMES_IN_FLIGHT = 2;
 export constexpr const int NUM_BACK_BUFFERS = 2;
 export constexpr const int SRV_HEAP_SIZE = 64;

@@ -25,8 +25,9 @@ export struct TokenRequest : public json::serializable
 	std::string client_secret;
 	std::string code;
 	std::string redirect_uri;
+	std::string refresh_token;
 
-	JSCHEME(grant_type, client_id, client_secret, code, redirect_uri);
+	JSCHEME(grant_type, client_id, client_secret, code, redirect_uri, refresh_token);
 };
 
 export struct TokenResponse : public json::serializable

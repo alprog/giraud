@@ -35,7 +35,21 @@ public:
 		request.client_secret = config.app.secret;
 		request.code = code;
 		request.redirect_uri = config.app.redirect_uri;
+		TokenExchange(request);
+	}
 
+	void RefreshTokens()
+	{
+		TokenRequest request;
+		request.grant_type = "refresh_token";
+		request.client_id = config.app.id;
+		request.client_secret = config.app.secret;
+		request.refresh_token = session.refreshToken;
+		TokenExchange(request);
+	}
+
+	void TokenExchange(TokenRequest request)
+	{
 		TokenResponse response = Post(request);
 		session.accessToken = response.access_token;
 		session.refreshToken = response.refresh_token;

@@ -6,6 +6,8 @@ export module config_panel;
 import database_panel;
 import configuration;
 
+// for intellisense
+
 export class ConfigPanel : public GuiPanel
 {
 public:

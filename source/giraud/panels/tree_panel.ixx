@@ -4,6 +4,8 @@ export module tree_panel;
 
 import database_panel;
 
+// for intellisense
+
 export class TreePanel : public DatabasePanel
 {
 public:

@@ -4,6 +4,8 @@ export module native_window;
 
 import std;
 
+// for intellisense
+
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 export class NativeWindow

@@ -4,6 +4,8 @@ export module project;
 
 import std;
 
+// for intellisense
+
 export struct Project : public json::serializable
 {
 	std::string id;

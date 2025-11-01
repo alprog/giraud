@@ -4,6 +4,8 @@ export module timestamp;
 
 import std;
 
+// for intellisense
+
 export struct Timestamp : public json::serializable
 {
 public:

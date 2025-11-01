@@ -6,6 +6,8 @@ import std;
 import get_uri;
 export import json;
 
+// for intellisense
+
 export struct JiraApp : public json::serializable
 {
 	std::string id;

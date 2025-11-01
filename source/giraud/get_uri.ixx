@@ -2,6 +2,8 @@ export module get_uri;
 
 import std;
 
+// for intellisense
+
 export struct GetUri
 {
 	GetUri(std::string baseUri)

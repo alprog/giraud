@@ -8,6 +8,8 @@ import network;
 import database;
 import edit_api;
 
+// for intellisense
+
 export class Client
 {
 public:
