@@ -23,7 +23,7 @@ Client::Client()
 {
 	config.load();
 
-	gui.AddPanel<UserPanel>(config, network);
+	gui.AddPanel<UserPanel>(db, api);
 	gui.AddPanel<TreePanel>(db, api);
 	gui.AddPanel<TablePanel>(db, api);
 	gui.AddPanel<DetailsPanel>(db, api);

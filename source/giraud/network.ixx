@@ -7,6 +7,7 @@ import std;
 import configuration;
 import requests;
 import session;
+import user;
 
 // for intellisense
 
@@ -74,6 +75,7 @@ public:
 		return from_json<TokenResponse>(responseJson);
 	}
 
+	User GetCurrentUser();
 	ProjectsResponse GetAllProjects();
 
 	std::string Post(std::string address, std::string bodyText);

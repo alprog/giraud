@@ -14,19 +14,18 @@ import timestamp;
 
 // for intellisense
 
-export class UserPanel : public GuiPanel
+export class UserPanel : public DatabasePanel
 {
 public:
-	UserPanel(Configuration& config, Network& network)
-		: config{ config }
-		, network{ network }
-	{
-	}
+	using DatabasePanel::DatabasePanel;
 
 	std::string GetName() const override { return "User"; }
 
 	void Draw() override
 	{
+		auto network = api.GetNetwork();
+		auto config = network.GetConfig();
+
 		if (!network.GetSession().IsLoggedIn())
 		{
 			if (ImGui::Button("Login"))
@@ -40,6 +39,7 @@ public:
 		}
 		else
 		{
+			Text("Welcome, {}", db.myself.displayName);
 			if (ImGui::Button("Logout"))
 			{
 				network.Logout();
@@ -91,6 +91,4 @@ public:
 	}
 
 	std::string codeString;
-	Configuration& config;
-	Network& network;
 };

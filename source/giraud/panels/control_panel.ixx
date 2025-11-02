@@ -57,12 +57,18 @@ public:
 	void DrawCommands()
 	{
 		const bool loggedIn = api.GetNetwork().IsLoggedIn();
-
 		ImGui::BeginDisabled(!loggedIn);
+		
+		if (ImGui::Button("Update Myself"))
+		{
+			api.UpdateMyself();
+		}
+
 		if (ImGui::Button("Update Projects"))
 		{
 			api.UpdateProjectList();
 		}
+		
 		ImGui::EndDisabled();
 	}
 };

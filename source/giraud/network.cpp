@@ -38,6 +38,24 @@ std::string Network::GetCloudId()
 	return "";
 }
 
+User Network::GetCurrentUser()
+{
+	httplib::Client cli("https://api.atlassian.com");
+	std::string address = std::format("/ex/jira/{}/{}", session.cloudId, "/rest/api/3/myself");
+
+	std::string authorizationString = std::format("Bearer {}", session.accessToken);
+	httplib::Headers headers = {
+		{ "Authorization", authorizationString },
+		{ "Accept", "application/json" }
+	};
+
+	auto response = cli.Get(address, headers);
+	std::string responseText = response->body;
+
+	nlohmann::json responseJson = nlohmann::json::parse(responseText);
+	return from_json<User>(responseJson);
+}
+
 ProjectsResponse Network::GetAllProjects()
 {
 	httplib::Client cli("https://api.atlassian.com");

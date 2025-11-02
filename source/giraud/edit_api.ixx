@@ -20,6 +20,11 @@ public:
 	const Network& GetNetwork() const { return network; }
 	Network& GetNetwork() { return network; }
 
+	void UpdateMyself()
+	{
+		database.myself = network.GetCurrentUser();
+	}
+
 	void UpdateProjectList()
 	{
 		database.projects = network.GetAllProjects().values;
