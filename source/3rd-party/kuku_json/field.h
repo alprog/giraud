@@ -9,8 +9,8 @@ namespace json
 	class base_field
 	{
 	public:
-		base_field(std::string field_name)
-			: field_name{ field_name }
+		base_field(std::string name)
+			: field_name{ name }
 		{
 			if (field_name.starts_with('_'))
 			{

@@ -51,6 +51,19 @@ public:
 			}
 		}
 
+		if (ImGui::CollapsingHeader("User"))
+		{
+			const User& user = db.myself;
+			LabelText("Id", user.accountId);
+			LabelText("Name", user.displayName);
+			LabelText("Email", user.emailAddress);
+			LabelText("Avatar16", user.avatarUrls._16x16);
+			LabelText("Avatar24", user.avatarUrls._24x24);
+			LabelText("Avatar32", user.avatarUrls._32x32);
+			LabelText("Avatar64", user.avatarUrls._64x64);
+			user.displayName;
+		}
+
 		DrawCommands();
 	}
 
