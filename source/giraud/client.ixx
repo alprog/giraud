@@ -6,6 +6,7 @@ import gui_system;
 import configuration;
 import network;
 import database;
+import selection;
 import edit_api;
 
 // for intellisense
@@ -26,5 +27,6 @@ private:
 	Configuration config;
 	Network network;
 	Database db;
+	Selection selection;
 	EditAPI api;
 };

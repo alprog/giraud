@@ -19,16 +19,17 @@ Client::Client()
 	, config{}
 	, network{ config }
 	, db{}
+	, selection{db}
 	, api{ db, network }
 {
 	config.load();
 
-	gui.AddPanel<UserPanel>(db, api);
-	gui.AddPanel<TreePanel>(db, api);
-	gui.AddPanel<TablePanel>(db, api);
-	gui.AddPanel<DetailsPanel>(db, api);
+	gui.AddPanel<UserPanel>(db, selection, api);
+	gui.AddPanel<TreePanel>(db, selection, api);
+	gui.AddPanel<TablePanel>(db, selection, api);
+	gui.AddPanel<DetailsPanel>(db, selection, api);
 
-	gui.AddPanel<ControlPanel>(db, api);
+	gui.AddPanel<ControlPanel>(db, selection, api);
 
 	//gui.ShowDemoPanel();
 }
