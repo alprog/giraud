@@ -20,6 +20,7 @@ public:
 	}
 
 	const Configuration& GetConfig() const { return config; }
+	const Session& GetSession() const { return session; }
 	Session& GetSession() { return session; }
 
 	bool IsLoggedIn() const

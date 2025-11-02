@@ -9,7 +9,7 @@ export class TablePanel : public DatabasePanel
 public:
 	using DatabasePanel::DatabasePanel;
 
-	std::string GetName() const override { return "TablePanel"; }
+	std::string GetName() const override { return "Table"; }
 
 	void Draw() override
 	{

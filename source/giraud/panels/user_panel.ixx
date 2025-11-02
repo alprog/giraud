@@ -23,7 +23,7 @@ public:
 	{
 	}
 
-	std::string GetName() const override { return "UserPanel"; }
+	std::string GetName() const override { return "User"; }
 
 	void Draw() override
 	{
@@ -40,35 +40,10 @@ public:
 		}
 		else
 		{
-			ImGui::Text(network.GetSession().accessToken.c_str());
-			ImGui::Text(network.GetSession().refreshToken.c_str());
-
-			int secondsLeft = network.GetSession().expirationTime - Timestamp::now();
-			if (secondsLeft > 0)
-			{
-				std::string expirationText = std::format("Expires in: {}", secondsLeft);
-				ImGui::Text(expirationText.c_str());
-			}
-			else
-			{
-				ImGui::Text("expired");
-			}
-
 			if (ImGui::Button("Logout"))
 			{
 				network.Logout();
 			}
-
-			if (secondsLeft < 5 * 60)
-			{
-				ImGui::SameLine();
-				if (ImGui::Button("Refresh"))
-				{
-					network.RefreshTokens();
-				}
-			}
-
-
 		}
 
 		auto Flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_AlwaysAutoResize;

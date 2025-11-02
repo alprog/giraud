@@ -288,7 +288,7 @@
     <ClCompile Include="giraud\database\project.ixx" />
     <ClCompile Include="giraud\json.ixx" />
     <ClCompile Include="giraud\network.ixx" />
-    <ClCompile Include="giraud\panels\config_panel.ixx" />
+    <ClCompile Include="giraud\panels\control_panel.ixx" />
     <ClCompile Include="giraud\configuration.ixx" />
     <ClCompile Include="giraud\database\database.ixx" />
     <ClCompile Include="giraud\panels\database_panel.ixx" />

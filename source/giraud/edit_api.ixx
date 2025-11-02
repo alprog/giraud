@@ -18,6 +18,7 @@ public:
 	const Configuration& GetConfig() const { return network.GetConfig(); }
 	const Database& GetDatabase() const { return database; }
 	const Network& GetNetwork() const { return network; }
+	Network& GetNetwork() { return network; }
 
 	void UpdateProjectList()
 	{
