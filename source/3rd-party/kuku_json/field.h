@@ -12,6 +12,10 @@ namespace json
 		base_field(std::string field_name)
 			: field_name{ field_name }
 		{
+			if (field_name.starts_with('_'))
+			{
+				field_name = field_name.substr(1);
+			}
 		}
 
 		virtual void serialize(void* instance, json::object& object) = 0;
