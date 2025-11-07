@@ -315,7 +315,6 @@
     <ClCompile Include="giraud\selection.ixx" />
     <ClCompile Include="giraud\session.ixx" />
     <ClCompile Include="giraud\timestamp.ixx" />
-    <ClCompile Include="giraud\user.ixx" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="3rd-party\imgui-docking\LICENSE.txt" />

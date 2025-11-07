@@ -1,6 +1,8 @@
 module;
 #include "../kuku_json.h"
-export module avatars_urls;
+export module avatar_urls;
+
+// for intellisense
 
 export struct AvatarUrls : public json::serializable
 {

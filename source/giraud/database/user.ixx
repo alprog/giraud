@@ -3,7 +3,7 @@ module;
 export module user;
 
 import std;
-import avatars_urls;
+import avatar_urls;
 
 // for intellisense
 
