@@ -60,7 +60,7 @@ public:
 			LabelText("Avatar16", user.avatarUrls._16x16);
 			LabelText("Avatar24", user.avatarUrls._24x24);
 			LabelText("Avatar32", user.avatarUrls._32x32);
-			LabelText("Avatar64", user.avatarUrls._64x64);
+			LabelText("Avatar48", user.avatarUrls._48x48);
 			user.displayName;
 		}
 
@@ -71,7 +71,7 @@ public:
 	{
 		const bool loggedIn = api.GetNetwork().IsLoggedIn();
 		ImGui::BeginDisabled(!loggedIn);
-		
+
 		if (ImGui::Button("Update Myself"))
 		{
 			api.UpdateMyself();
@@ -81,7 +81,12 @@ public:
 		{
 			api.UpdateProjectList();
 		}
-		
+
+		if (ImGui::Button("Update Epics"))
+		{
+			api.UpdateEpics();
+		}
+
 		ImGui::EndDisabled();
 	}
 };

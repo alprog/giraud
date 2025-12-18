@@ -3,6 +3,7 @@ module;
 export module project;
 
 import std;
+import avatar_urls;
 
 // for intellisense
 
@@ -12,6 +13,7 @@ export struct Project : public json::serializable
 	std::string key;
 	std::string name;
 	std::string description;
+	AvatarUrls avatarUrls;
 
-	JSCHEME(id, key, name, description);
+	JSCHEME(id, key, name, description, avatarUrls);
 };

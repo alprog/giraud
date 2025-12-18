@@ -19,7 +19,6 @@ std::string Network::GetCloudId()
 	std::string address = "/oauth/token/accessible-resources";
 
 	std::string authorizationString = std::format("Bearer {}", session.accessToken);
-
 	httplib::Headers headers = {
 		{ "Authorization", authorizationString },
 		{ "Accept", "application/json" }
@@ -72,4 +71,10 @@ ProjectsResponse Network::GetAllProjects()
 
 	nlohmann::json responseJson = nlohmann::json::parse(responseText);
 	return from_json<ProjectsResponse>(responseJson);
+}
+
+IssuesResponse Network::GetAllEpics(Project project)
+{
+	IssuesResponse response;
+	return response;
 }

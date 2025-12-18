@@ -30,6 +30,11 @@ public:
 		database.projects = network.GetAllProjects().values;
 	}
 
+	void UpdateEpics()
+	{
+
+	}
+
 private:
 	Database& database;
 	Network& network;

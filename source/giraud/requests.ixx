@@ -58,3 +58,28 @@ export struct ProjectsResponse : public json::serializable
 
 	JSCHEME(values);
 };
+
+export struct IssueFields : public json::serializable
+{
+	std::string summary;
+
+	JSCHEME(summary);
+};
+
+export struct IssueDesc : public json::serializable
+{
+	std::string id;
+	std::string key;
+	IssueFields fields;
+
+	JSCHEME(id, key, fields);
+};
+
+export struct IssuesResponse : public json::serializable
+{
+	bool isLast;
+	std::string nextPageToken;
+	std::vector<IssueDesc> issues;
+
+	JSCHEME(issues, isLast, nextPageToken);
+};

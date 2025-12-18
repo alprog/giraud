@@ -8,6 +8,7 @@ import configuration;
 import requests;
 import session;
 import user;
+import project;
 
 // for intellisense
 
@@ -77,6 +78,7 @@ public:
 
 	User GetCurrentUser();
 	ProjectsResponse GetAllProjects();
+	IssuesResponse GetAllEpics(Project project);
 
 	std::string Post(std::string address, std::string bodyText);
 	std::string GetCloudId();
