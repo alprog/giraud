@@ -3,7 +3,7 @@ module;
 export module requests;
 
 import std;
-import project;
+import avatar_urls;
 
 export import json;
 
@@ -52,9 +52,20 @@ export struct RefreshTokenRequest : public json::serializable
 	JSCHEME(grant_type, client_id, client_secret, code, redirect_uri);
 };
 
+export struct ProjectDesc : public json::serializable
+{
+	std::string id;
+	std::string key;
+	std::string name;
+	std::string description;
+	AvatarUrls avatarUrls;
+
+	JSCHEME(id, key, name, description, avatarUrls);
+};
+
 export struct ProjectsResponse : public json::serializable
 {
-	std::vector<Project> values;
+	std::vector<ProjectDesc> values;
 
 	JSCHEME(values);
 };

@@ -14,20 +14,8 @@ std::string Network::Post(std::string address, std::string postBody)
 
 std::string Network::GetCloudId()
 {
-	httplib::Client cli("https://api.atlassian.com");
-
 	std::string address = "/oauth/token/accessible-resources";
-
-	std::string authorizationString = std::format("Bearer {}", session.accessToken);
-	httplib::Headers headers = {
-		{ "Authorization", authorizationString },
-		{ "Accept", "application/json" }
-	};
-
-	auto response = cli.Get(address, headers);
-	std::string responseText = response->body;
-	nlohmann::json responseJson = nlohmann::json::parse(responseText);
-
+	nlohmann::json responseJson = GetRequestInternal(address);
 	if (responseJson.is_array())
 	{
 		auto website = from_json<WebSite>(responseJson[0]);
@@ -39,46 +27,26 @@ std::string Network::GetCloudId()
 
 User Network::GetCurrentUser()
 {
-	httplib::Client cli("https://api.atlassian.com");
 	std::string address = std::format("/ex/jira/{}/{}", session.cloudId, "rest/api/3/myself");
-
-	std::string authorizationString = std::format("Bearer {}", session.accessToken);
-	httplib::Headers headers = {
-		{ "Authorization", authorizationString },
-		{ "Accept", "application/json" }
-	};
-
-	auto response = cli.Get(address, headers);
-	std::string responseText = response->body;
-
-	nlohmann::json responseJson = nlohmann::json::parse(responseText);
-	return from_json<User>(responseJson);
+	return from_json<User>(GetRequestInternal(address));
 }
 
 ProjectsResponse Network::GetAllProjects()
 {
-	httplib::Client cli("https://api.atlassian.com");
 	std::string address = std::format("/ex/jira/{}/{}", session.cloudId, "rest/api/3/project/search");
-
-	std::string authorizationString = std::format("Bearer {}", session.accessToken);
-	httplib::Headers headers = {
-		{ "Authorization", authorizationString },
-		{ "Accept", "application/json" }
-	};
-
-	auto response = cli.Get(address, headers);
-	std::string responseText = response->body;
-
-	nlohmann::json responseJson = nlohmann::json::parse(responseText);
-	return from_json<ProjectsResponse>(responseJson);
+	return from_json<ProjectsResponse>(GetRequestInternal(address));
 }
 
-IssuesResponse Network::GetAllEpics(Project project)
+IssuesResponse Network::GetAllEpics(const Project& project)
 {
-	httplib::Client cli("https://api.atlassian.com");
 	std::string args = "jql?jql=project=JUS%20AND%20issuetype=epic%20AND%20statusCategory=2&maxResults=1000&fields=customfield_11633,summary";
 	std::string address = std::format("/ex/jira/{}/{}/{}", session.cloudId, "rest/api/3/search", args);
+	return from_json<IssuesResponse>(GetRequestInternal(address));
+}
 
+nlohmann::json Network::GetRequestInternal(std::string address)
+{
+	httplib::Client cli("https://api.atlassian.com");
 	std::string authorizationString = std::format("Bearer {}", session.accessToken);
 	httplib::Headers headers = {
 		{ "Authorization", authorizationString },
@@ -87,7 +55,5 @@ IssuesResponse Network::GetAllEpics(Project project)
 
 	auto response = cli.Get(address, headers);
 	std::string responseText = response->body;
-
-	nlohmann::json responseJson = nlohmann::json::parse(responseText);
-	return from_json<IssuesResponse>(responseJson);
+	return nlohmann::json::parse(responseText);
 }

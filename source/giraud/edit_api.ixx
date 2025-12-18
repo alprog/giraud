@@ -4,6 +4,7 @@ import configuration;
 import database;
 import selection;
 import network;
+import utils;
 
 // for intellisense
 
@@ -29,12 +30,16 @@ public:
 
 	void UpdateProjectList()
 	{
-		database.projects = network.GetAllProjects().values;
+		for (auto desc : network.GetAllProjects().values)
+		{
+			int id = std::atoi(desc.id.c_str());
+			access_or_create(database.projects, id).update(desc);
+		}
 	}
 
 	void UpdateEpics()
 	{
-		network.GetAllEpics(database.projects[0]);
+		network.GetAllEpics(*database.projects[0]);
 	}
 
 private:

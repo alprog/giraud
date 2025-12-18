@@ -41,6 +41,11 @@ public:
 		return static_cast<int>(a.value - b.value);
 	}
 
+	friend auto operator<=>(const Timestamp& a, const Timestamp& b)
+	{
+		return a.value <=> b.value;
+	}
+
 public:
 	std::time_t value;
 

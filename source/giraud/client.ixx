@@ -20,6 +20,7 @@ public:
 
 private:
 	Client();
+	void update();
 
 	NativeWindow window;
 	GfxRenderer renderer;

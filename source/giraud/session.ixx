@@ -15,6 +15,11 @@ public:
 		return !accessToken.empty();
 	}
 
+	bool IsExpired() const
+	{
+		return Timestamp::now() >= expirationTime;
+	}
+
 	std::string accessToken;
 	std::string refreshToken;
 	Timestamp expirationTime;

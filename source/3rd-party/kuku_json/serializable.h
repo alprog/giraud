@@ -67,6 +67,12 @@ VectorType from_json(json::object& object)
 	throw new std::exception("not array");
 }
 
+template <typename T>
+auto from_json(json::object&& object)
+{
+	return from_json<T>(object);
+}
+
 #define JFIELD(memberName) new json::field{ #memberName, &Self::memberName }
 
 #define JSCHEME(...) \

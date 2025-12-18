@@ -286,6 +286,7 @@
     <ClCompile Include="3rd-party\imgui-docking\misc\cpp\imgui_stdlib.cpp" />
     <ClCompile Include="3rd-party\kuku_json\utils.cpp" />
     <ClCompile Include="giraud\database\avatar_urls.ixx" />
+    <ClCompile Include="giraud\database\folder.ixx" />
     <ClCompile Include="giraud\database\issue.ixx" />
     <ClCompile Include="giraud\database\project.ixx" />
     <ClCompile Include="giraud\database\user.ixx" />
@@ -318,6 +319,7 @@
     <ClCompile Include="giraud\selection.ixx" />
     <ClCompile Include="giraud\session.ixx" />
     <ClCompile Include="giraud\timestamp.ixx" />
+    <ClCompile Include="giraud\utils.ixx" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="3rd-party\imgui-docking\LICENSE.txt" />

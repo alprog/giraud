@@ -78,10 +78,13 @@ public:
 
 	User GetCurrentUser();
 	ProjectsResponse GetAllProjects();
-	IssuesResponse GetAllEpics(Project project);
+	IssuesResponse GetAllEpics(const Project& project);
 
 	std::string Post(std::string address, std::string bodyText);
 	std::string GetCloudId();
+
+private:
+	nlohmann::json GetRequestInternal(std::string address);
 
 private:
 	const Configuration& config;

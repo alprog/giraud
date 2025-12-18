@@ -30,14 +30,14 @@ Client::Client()
 	gui.AddPanel<DetailsPanel>(db, selection, api);
 
 	gui.AddPanel<ControlPanel>(db, selection, api);
-
-	//gui.ShowDemoPanel();
 }
 
 void Client::RunEventLoop()
 {
 	while (window.ProcessEvents())
 	{
+		update();
+
 		gui.NewFrame();
 
 		gui.PrepareDraw();
@@ -54,3 +54,21 @@ void Client::RunEventLoop()
 	renderer.WaitForLastSubmittedFrame();
 }
 
+void Client::update()
+{
+	if (network.IsLoggedIn())
+	{
+		if (network.GetSession().IsExpired())
+		{
+			network.RefreshTokens();
+		}
+		else if (!db.myself.isValid())
+		{
+			api.UpdateMyself();
+		}
+		else if (db.projects.empty())
+		{
+			api.UpdateProjectList();
+		}
+	}
+}

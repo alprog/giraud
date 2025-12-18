@@ -14,5 +14,10 @@ export struct User : public json::serializable
 	std::string emailAddress;
 	AvatarUrls avatarUrls;
 
+	bool isValid() const
+	{
+		return accountId != "";
+	}
+
 	JSCHEME(accountId, displayName, emailAddress, avatarUrls);
 };
