@@ -15,7 +15,7 @@ public:
 
 	void Draw() override
 	{
-		for (auto& [id, project] : db.projects)
+		for (auto project : db.projects)
 		{
 			ImGui::Text(project->name.c_str());
 		}

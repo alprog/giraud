@@ -39,7 +39,7 @@ public:
 
 	void UpdateEpics()
 	{
-		for (auto& [key, project] : database.projects)
+		for (auto project : database.projects)
 		{
 			network.GetAllEpics(*project);
 			return;

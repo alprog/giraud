@@ -2,18 +2,18 @@ export module utils;
 
 import std;
 
-export template <typename TKey, typename TValue>
-TValue& access_or_create(std::unordered_map<TKey, std::shared_ptr<TValue>>& map, TKey key)
+export template <typename TValue>
+TValue& access_or_create(std::vector<TValue*>& array, int id)
 {
-	auto it = map.find(key);
-	if (it != std::end(map))
+	for (auto ptr : array)
 	{
-		return *it->second;
+		if (ptr->id == id)
+		{
+			return *ptr;
+		}
 	}
-	else
-	{
-		std::shared_ptr<TValue> ptr = std::make_shared<TValue>(key);
-		map[key] = ptr;
-		return *ptr;
-	}
+
+	auto ptr = new TValue(id);
+	array.push_back(ptr);
+	return *ptr;
 }

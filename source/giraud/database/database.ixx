@@ -12,5 +12,5 @@ export class Database
 public:
 	User myself;
 
-	std::unordered_map<int, std::shared_ptr<Project>> projects;
+	std::vector<Project*> projects;
 };
