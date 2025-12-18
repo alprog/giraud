@@ -37,9 +37,10 @@ ProjectsResponse Network::GetAllProjects()
 	return from_json<ProjectsResponse>(GetRequestInternal(address));
 }
 
-IssuesResponse Network::GetAllEpics(const Project& project)
+IssuesResponse Network::GetAllEpics(const Project* project)
 {
-	std::string args = "jql?jql=project=JUS%20AND%20issuetype=epic%20AND%20statusCategory=2&maxResults=1000&fields=customfield_11633,summary";
+	constexpr const char* fmt = "jql?jql=project={}%20AND%20issuetype=epic%20AND%20statusCategory=2&maxResults=1000&fields=customfield_11633,summary";
+	std::string args = std::format(fmt, project->key);
 	std::string address = std::format("/ex/jira/{}/{}/{}", session.cloudId, "rest/api/3/search", args);
 	return from_json<IssuesResponse>(GetRequestInternal(address));
 }

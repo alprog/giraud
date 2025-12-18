@@ -5,6 +5,9 @@ import database;
 import selection;
 import network;
 import utils;
+import project;
+import utils;
+import issue;
 
 // for intellisense
 
@@ -39,10 +42,17 @@ public:
 
 	void UpdateEpics()
 	{
-		for (auto project : database.projects)
+		auto project = dynamic_cast<Project*>(selection.item);
+		if (project)
 		{
-			network.GetAllEpics(*project);
-			return;
+			project->children.clear();
+			for (auto& desc : network.GetAllEpics(project).issues)
+			{
+				int id = std::atoi(desc.id.c_str());
+				auto& epic = access_or_create(project->issues, id);
+				epic.update(desc);
+				project->children.push_back(&epic);
+			}
 		}
 	}
 

@@ -16,7 +16,7 @@ export struct Project : public TreeItem
 	std::string description;
 	AvatarUrls avatarUrls;
 
-	std::unordered_map<int, std::shared_ptr<Issue>> issues;
+	std::vector<Issue*> issues;
 
 	Project(int id)
 		: id{ id }

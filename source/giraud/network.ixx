@@ -78,7 +78,7 @@ public:
 
 	User GetCurrentUser();
 	ProjectsResponse GetAllProjects();
-	IssuesResponse GetAllEpics(const Project& project);
+	IssuesResponse GetAllEpics(const Project* project);
 
 	std::string Post(std::string address, std::string bodyText);
 	std::string GetCloudId();
