@@ -24,6 +24,16 @@ void json::serializable::read_fields(json::object& object)
 }
 
 template<>
+bool from_json<bool>(json::object& object)
+{
+	if (object.is_boolean())
+	{
+		return object.get<bool>();
+	}
+	throw std::exception("not bool");
+}
+
+template<>
 int from_json<int>(json::object& object)
 {
 	if (object.is_number_integer())
