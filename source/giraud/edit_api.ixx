@@ -39,7 +39,11 @@ public:
 
 	void UpdateEpics()
 	{
-		network.GetAllEpics(*database.projects[0]);
+		for (auto& [key, project] : database.projects)
+		{
+			network.GetAllEpics(*project);
+			return;
+		}
 	}
 
 private:

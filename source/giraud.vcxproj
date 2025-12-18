@@ -289,6 +289,7 @@
     <ClCompile Include="giraud\database\folder.ixx" />
     <ClCompile Include="giraud\database\issue.ixx" />
     <ClCompile Include="giraud\database\project.ixx" />
+    <ClCompile Include="giraud\database\tree_item.ixx" />
     <ClCompile Include="giraud\database\user.ixx" />
     <ClCompile Include="giraud\jql.cpp" />
     <ClCompile Include="giraud\jql.ixx" />
