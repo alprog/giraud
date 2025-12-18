@@ -271,6 +271,7 @@
     <ClInclude Include="3rd-party\kuku_json\serializable.h" />
     <ClInclude Include="3rd-party\kuku_json\preprocessor\common.h" />
     <ClInclude Include="3rd-party\kuku_json\preprocessor\for_each.h" />
+    <ClInclude Include="giraud\custom_fields.h" />
     <ClInclude Include="giraud\kuku_json.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

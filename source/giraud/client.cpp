@@ -19,8 +19,8 @@ Client::Client()
 	, config{}
 	, network{ config }
 	, db{}
-	, selection{db}
-	, api{ db, network }
+	, selection{ db }
+	, api{ db, selection, network }
 {
 	config.load();
 

@@ -2,6 +2,7 @@ export module edit_api;
 
 import configuration;
 import database;
+import selection;
 import network;
 
 // for intellisense
@@ -9,8 +10,9 @@ import network;
 export class EditAPI
 {
 public:
-	EditAPI(Database& database, Network& network)
+	EditAPI(Database& database, Selection& selection, Network& network)
 		: database{ database }
+		, selection{ selection }
 		, network{ network }
 	{
 	}
@@ -32,10 +34,11 @@ public:
 
 	void UpdateEpics()
 	{
-
+		network.GetAllEpics(database.projects[0]);
 	}
 
 private:
 	Database& database;
+	Selection& selection;
 	Network& network;
 };

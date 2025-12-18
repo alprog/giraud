@@ -16,6 +16,10 @@ namespace json
 			{
 				field_name = field_name.substr(1);
 			}
+			if (field_name == "customFields")
+			{
+				field_name = "fields";
+			}
 		}
 
 		virtual void serialize(void* instance, json::object& object) = 0;

@@ -1,5 +1,5 @@
 module;
-#include "kuku_json.h"
+#include "custom_fields.h"
 export module requests;
 
 import std;
@@ -71,8 +71,9 @@ export struct IssueDesc : public json::serializable
 	std::string id;
 	std::string key;
 	IssueFields fields;
+	CustomFields customFields;
 
-	JSCHEME(id, key, fields);
+	JSCHEME(id, key, fields, customFields);
 };
 
 export struct IssuesResponse : public json::serializable
