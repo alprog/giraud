@@ -46,7 +46,7 @@ public:
 		if (project)
 		{
 			project->children.clear();
-			for (auto& desc : network.GetAllEpics(project).issues)
+			for (auto& desc : network.GetAllEpics(project))
 			{
 				int id = std::atoi(desc.id.c_str());
 				auto& epic = access_or_create(project->issues, id);
