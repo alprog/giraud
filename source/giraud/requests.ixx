@@ -5,6 +5,8 @@ export module requests;
 import std;
 import avatar_urls;
 
+export class CustomFields;
+
 export import json;
 
 // for intellisense

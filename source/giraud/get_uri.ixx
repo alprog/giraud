@@ -1,6 +1,7 @@
 export module get_uri;
 
 import std;
+import utils;
 
 // for intellisense
 
@@ -29,7 +30,12 @@ export struct GetUri
 			first = false;
 		}
 
-		return ss.str();
+		std::string result = ss.str();
+		if (result.contains(' '))
+		{
+			replace(result, " ", "%20");
+		};
+		return result;
 	}
 
 	std::string baseUri;

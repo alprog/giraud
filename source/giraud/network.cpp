@@ -4,6 +4,9 @@ module;
 #include "kuku_json.h"
 module network;
 
+import jql;
+import get_uri;
+
 std::string Network::Post(std::string address, std::string postBody)
 {
 	httplib::Client cli("https://auth.atlassian.com");
@@ -27,26 +30,35 @@ std::string Network::GetCloudId()
 
 User Network::GetCurrentUser()
 {
-	std::string address = std::format("/ex/jira/{}/{}", session.cloudId, "rest/api/3/myself");
+	std::string address = std::format("/ex/jira/{}/rest/api/3/{}", session.cloudId, "myself");
 	return from_json<User>(GetRequestInternal(address));
 }
 
 ProjectsResponse Network::GetAllProjects()
 {
-	std::string address = std::format("/ex/jira/{}/{}", session.cloudId, "rest/api/3/project/search");
+	std::string address = std::format("/ex/jira/{}/rest/api/3/{}", session.cloudId, "project/search");
 	return from_json<ProjectsResponse>(GetRequestInternal(address));
 }
 
 std::vector<IssueDesc> Network::GetAllEpics(const Project* project)
 {
 	std::vector<IssueDesc> descs;
+	
+	GetUri uri(std::format("/ex/jira/{}/rest/api/3/{}", session.cloudId, "search/jql"));
+	uri.AddParam("jql", JQL().project(project).statusCategory(2).issuetype("epic").toString());
+	uri.AddParam("maxResults", "1000");
+	uri.AddParam("fields", "customfield_11633,summary");
 
-	constexpr const char* fmt = "jql?jql=project={}%20AND%20issuetype=epic%20AND%20statusCategory=2&maxResults=1000&fields=customfield_11633,summary";
-	std::string args = std::format(fmt, project->key);
-	std::string address = std::format("/ex/jira/{}/{}/{}", session.cloudId, "rest/api/3/search", args);
-	IssuesResponse response = from_json<IssuesResponse>(GetRequestInternal(address));
+	while (true)
+	{
+		std::string address = uri.BuildFullUrl();
+		IssuesResponse response = from_json<IssuesResponse>(GetRequestInternal(address));
+		descs.insert(descs.end(), response.issues.begin(), response.issues.end());
 
-	descs.insert(descs.end(), response.issues.begin(), response.issues.end());
+		if (response.isLast)
+			break;
+		uri.AddParam("nextPageToken", response.nextPageToken);
+	}
 
 	return descs;
 }

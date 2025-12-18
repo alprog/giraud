@@ -14,6 +14,7 @@ export struct Issue : public TreeItem
 	std::string summary;
 	std::string title;
 	std::string description;
+    CustomFields customFields;	
 
 	Issue(int id)
 		: id{ id }
@@ -25,6 +26,7 @@ export struct Issue : public TreeItem
 		this->key = desc.key;
 		this->summary = desc.fields.summary;
 		this->title = makeTitle(summary);
+		this->customFields = desc.customFields;
 	}
 
 	std::string& getDisplayText()
