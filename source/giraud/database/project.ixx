@@ -4,10 +4,11 @@ import std;
 import avatar_urls;
 import issue;
 import requests;
+import tree_item;
 
 // for intellisense
 
-export struct Project
+export struct Project : public TreeItem
 {
 	int id;
 	std::string key;
@@ -20,6 +21,11 @@ export struct Project
 	Project(int id)
 		: id{ id }
 	{
+	}
+
+	std::string& getDisplayText() override
+	{
+		return name;
 	}
 
 	void update(const ProjectDesc& desc)

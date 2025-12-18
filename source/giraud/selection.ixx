@@ -1,6 +1,7 @@
 export module selection;
 
 import database;
+import tree_item;
 
 // for intellisense
 
@@ -11,6 +12,8 @@ public:
 		: db{ database }
 	{
 	}
+
+	TreeItem* item = nullptr;
 
 	const Database& db;
 };

@@ -127,5 +127,5 @@ private:
 	NativeWindow& nativeWindow;
 	GfxRenderer& gfxRenderer;
 	std::vector<std::unique_ptr<GuiPanel>> panels;
-	bool isDemoPanelShown = false;
+	bool isDemoPanelShown = true;
 };
