@@ -65,6 +65,22 @@ public:
 		}
 	}
 
+	void UpdateSubTasks()
+	{
+		auto issue = dynamic_cast<Issue*>(selection.item);
+		if (issue)
+		{
+			issue->children.clear();
+			for (auto& desc : network.GetAllSubTasks(issue))
+			{
+				int id = std::atoi(desc.id.c_str());
+				auto subtask = database.issues[id];
+				subtask->update(desc);
+				issue->children.push_back(subtask);
+			}
+		}
+	}
+
 private:
 	Database& database;
 	Selection& selection;

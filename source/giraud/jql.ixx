@@ -2,6 +2,7 @@ export module jql;
 
 import std;
 import project;
+import issue;
 
 export class JQL
 {
@@ -11,6 +12,11 @@ public:
 	JQL& project(const Project* project)
 	{
 		return addCondition("project", project->key);
+	}
+
+	JQL& parent(const Issue* issue)
+	{
+		return addCondition("parent", std::to_string(issue->id));
 	}
 
 	JQL& issuetype(std::string type)

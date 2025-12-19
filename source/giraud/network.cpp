@@ -63,6 +63,30 @@ std::vector<IssueDesc> Network::GetAllEpics(const Project* project)
 	return descs;
 }
 
+std::vector<IssueDesc> Network::GetAllSubTasks(const Issue* issue)
+{
+	std::vector<IssueDesc> descs;
+
+	GetUri uri(std::format("/ex/jira/{}/rest/api/3/{}", session.cloudId, "search/jql"));
+	uri.AddParam("jql", JQL().parent(issue).statusCategory(2).toString());
+	uri.AddParam("maxResults", "1000");
+	uri.AddParam("fields", "customfield_11633,summary");
+
+	while (true)
+	{
+		std::string address = uri.BuildFullUrl();
+		IssuesResponse response = from_json<IssuesResponse>(GetRequestInternal(address));
+		descs.insert(descs.end(), response.issues.begin(), response.issues.end());
+
+		if (response.isLast)
+			break;
+		uri.AddParam("nextPageToken", response.nextPageToken);
+	}
+
+	return descs;
+}
+
+
 nlohmann::json Network::GetRequestInternal(std::string address)
 {
 	httplib::Client cli("https://api.atlassian.com");

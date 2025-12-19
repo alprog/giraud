@@ -87,6 +87,11 @@ public:
 			api.UpdateEpics();
 		}
 
+		if (ImGui::Button("Update SubTasks"))
+		{
+			api.UpdateSubTasks();
+		}
+
 		ImGui::EndDisabled();
 	}
 };
