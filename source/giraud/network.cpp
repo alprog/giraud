@@ -43,7 +43,7 @@ ProjectsResponse Network::GetAllProjects()
 std::vector<IssueDesc> Network::GetAllEpics(const Project* project)
 {
 	std::vector<IssueDesc> descs;
-	
+
 	GetUri uri(std::format("/ex/jira/{}/rest/api/3/{}", session.cloudId, "search/jql"));
 	uri.AddParam("jql", JQL().project(project).statusCategory(2).issuetype("epic").toString());
 	uri.AddParam("maxResults", "1000");

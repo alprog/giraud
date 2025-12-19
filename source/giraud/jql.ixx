@@ -28,7 +28,6 @@ public:
 		return stream.str();
 	}
 
-private:
 	JQL& addCondition(std::string key, std::string value)
 	{
 		const bool isEmtpy = stream.tellp() == 0;

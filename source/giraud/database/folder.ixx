@@ -6,10 +6,15 @@ import tree_item;
 export class Folder : public TreeItem
 {
 public:
-	Folder(TreeItem* parent, std::string name)
-		: TreeItem{ parent->uid + "/" + name }
+	std::string name;
+
+	Folder(std::string uid)
+		: TreeItem{ uid }
 	{
 	}
 
-	std::string name;
+	std::string& getDisplayText() override
+	{
+		return name;
+	}
 };

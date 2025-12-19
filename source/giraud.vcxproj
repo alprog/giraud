@@ -286,10 +286,10 @@
     <ClCompile Include="3rd-party\imgui-docking\misc\cpp\imgui_stdlib.cpp" />
     <ClCompile Include="3rd-party\kuku_json\utils.cpp" />
     <ClCompile Include="giraud\database\avatar_urls.ixx" />
+    <ClCompile Include="giraud\database\database.cpp" />
     <ClCompile Include="giraud\database\db_map.ixx" />
-    <ClCompile Include="giraud\database\db_utils.cpp" />
-    <ClCompile Include="giraud\database\db_utils.ixx" />
     <ClCompile Include="giraud\database\folder.ixx" />
+    <ClCompile Include="giraud\database\folders_type.ixx" />
     <ClCompile Include="giraud\database\issue.ixx" />
     <ClCompile Include="giraud\database\project.ixx" />
     <ClCompile Include="giraud\database\tree_item.ixx" />

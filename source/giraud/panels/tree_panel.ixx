@@ -34,7 +34,10 @@ public:
 			flags |= ImGuiTreeNodeFlags_Selected;
 		}
 
-		item->opened = ImGui::TreeNodeEx(item, flags, item->getDisplayText().c_str());
+		const int count = item->children.size();
+		const std::string& caption = item->getDisplayText();
+		auto nodeText = count > 0 ? std::format("{} ({})", caption, count) : caption;
+		item->opened = ImGui::TreeNodeEx(item, flags, nodeText.c_str());
 
 		if (ImGui::IsItemClicked() && !ImGui::IsItemToggledOpen())
 		{

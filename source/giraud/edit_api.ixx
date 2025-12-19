@@ -8,6 +8,7 @@ import project;
 import utils;
 import issue;
 import selection;
+import folders_type;
 
 // for intellisense
 
@@ -60,6 +61,7 @@ public:
 				epic->update(desc);
 				project->children.push_back(epic);
 			}
+			database.CreateSubFolders(project, EFoldersType::EpicFolders);
 		}
 	}
 

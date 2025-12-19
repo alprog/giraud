@@ -13,25 +13,27 @@ struct CustomFields : public json::serializable
 	}
 };
 
-json::object serialize(CustomFields& serializable)
-{
-	return {};
-}
-
 template <>
 CustomFields from_json<CustomFields>(json::object& object)
 {
 	std::string prefix = "customfield_";
 
 	CustomFields customFields;
-	for (const auto& [key, value] : object.items())
+	for (const auto& [key, arrayValue] : object.items())
 	{
-		if (value.is_string())
+		if (key.starts_with(prefix))
 		{
-			if (key.starts_with(prefix))
+			int index = std::atoi(key.substr(prefix.size()).c_str());
+			if (arrayValue.is_array())
 			{
-				int index = std::atoi(key.substr(prefix.size()).c_str());
-				customFields.values[index] = from_json<std::string>(value);
+				if (arrayValue.size() > 0 && arrayValue[0].is_object())
+				{
+					auto value = arrayValue[0]["value"];
+					if (value.is_string())
+					{
+						customFields.values[index] = from_json<std::string>(value);
+					}
+				}
 			}
 		}
 	}
