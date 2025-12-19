@@ -16,7 +16,7 @@ public:
 
 	void Draw() override
 	{
-		for (TreeItem* item : db.projects)
+		for (TreeItem* item : db.treeview)
 		{
 			DrawItem(item);
 		}

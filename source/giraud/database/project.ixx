@@ -5,21 +5,22 @@ import avatar_urls;
 import issue;
 import requests;
 import tree_item;
+import folder;
 
 // for intellisense
 
-export struct Project : public TreeItem
+export class Project : public TreeItem
 {
+public:
 	int id;
 	std::string key;
 	std::string name;
 	std::string description;
 	AvatarUrls avatarUrls;
 
-	std::vector<Issue*> issues;
-
 	Project(int id)
-		: id{ id }
+		: TreeItem{ std::format("p{}", id) }
+		, id{ id }
 	{
 	}
 

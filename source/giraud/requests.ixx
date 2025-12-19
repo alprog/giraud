@@ -5,7 +5,7 @@ export module requests;
 import std;
 import avatar_urls;
 
-export class CustomFields;
+export struct CustomFields;
 
 export import json;
 

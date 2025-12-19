@@ -1,7 +1,9 @@
 export module database;
 
 import std;
+import db_map;
 import issue;
+import tree_item;
 import project;
 import user;
 
@@ -11,6 +13,8 @@ export class Database
 {
 public:
 	User myself;
+	DBMap<int, Project> projects;
+	DBMap<int, Issue> issues;
 
-	std::vector<Project*> projects;
+	std::vector<TreeItem*> treeview;
 };

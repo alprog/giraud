@@ -1,9 +1,9 @@
 export module selection;
 
+// for intellisense
+
 import database;
 import tree_item;
-
-// for intellisense
 
 export class Selection
 {

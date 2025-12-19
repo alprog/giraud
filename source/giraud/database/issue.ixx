@@ -7,17 +7,19 @@ import utils;
 
 // for intellisense
 
-export struct Issue : public TreeItem
+export class Issue : public TreeItem
 {
+public:
 	int id;
 	std::string key;
 	std::string summary;
 	std::string title;
 	std::string description;
-    CustomFields customFields;	
+	CustomFields customFields;
 
 	Issue(int id)
-		: id{ id }
+		: TreeItem{ std::format("i{}", id) }
+		, id{ id }
 	{
 	}
 

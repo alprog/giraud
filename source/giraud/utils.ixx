@@ -2,22 +2,6 @@ export module utils;
 
 import std;
 
-export template <typename TValue>
-TValue& access_or_create(std::vector<TValue*>& array, int id)
-{
-	for (auto ptr : array)
-	{
-		if (ptr->id == id)
-		{
-			return *ptr;
-		}
-	}
-
-	auto ptr = new TValue(id);
-	array.push_back(ptr);
-	return *ptr;
-}
-
 export void trim(std::string& s)
 {
 	auto is_space = [](unsigned char c) { return std::isspace(c); };
@@ -32,19 +16,25 @@ export void to_lower(std::string& s)
 
 export void replace(std::string& string, std::string oldValue, std::string newValue)
 {
-    while (true)
-    {
-        auto index = string.find(oldValue.c_str());
-        if (index == std::string::npos)
-        {
-            break;
-        }
-        string.replace(index, oldValue.size(), newValue);
-    }
+	while (true)
+	{
+		auto index = string.find(oldValue.c_str());
+		if (index == std::string::npos)
+		{
+			break;
+		}
+		string.replace(index, oldValue.size(), newValue);
+	}
 }
 
 export std::string getReplaced(std::string string, std::string oldValue, std::string newValue)
 {
-    replace(string, oldValue, newValue);
-    return string;
+	replace(string, oldValue, newValue);
+	return string;
+}
+
+export template<typename TElement, typename TPredicate>
+void sort(std::vector<TElement>& array, TPredicate pred)
+{
+	std::sort(array.begin(), array.end(), pred);
 }
